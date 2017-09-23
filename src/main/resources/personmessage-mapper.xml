@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexin.personmessage.dao.PersonMessageDao">
+	<!-- 添加个人信息 -->
+	<insert id="addPersonMessage" parameterType="com.kexin.personmessage.entity.PersonMessageEntity">
+		insert into
+		personmessage(id,personID,time,personHeight,personWeight,bmiValue)
+		values(#{id},#{personID},#{time},#{personHeight},#{personWeight},#{bmiValue})
+	</insert>
+	<!-- 查询个人信息按照时间降序排列 -->
+	<select id="findPersonMessage" resultType="java.util.Map">
+		select * from
+		personmessage order by time desc
+	</select>
+	<!-- 删除个人信息 -->
+	<delete id="deletePersonMessage" parameterType="String">
+		delete from
+		personmessage where id=#{id}
+	</delete>
+</mapper>
