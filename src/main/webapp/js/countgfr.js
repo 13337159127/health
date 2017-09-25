@@ -65,21 +65,24 @@ $(function() {
 						url : _ctxPath + '/persongfr/findGfr.kexin',
 						dataType : 'json',							 
 						success : function(data) {
+							//清空元素下的DOM元素
+							$("#tbody2").html("");
 							$.each(data,function(index,value){
-							   // 如果输入的肌酐值和输入的年龄相等，则把GFR的值添加到页面
-							   if ((age == value.age && createinine == value.creatinine) && (sex == value.sex && skin == value.skin)) {
-									$("#gfr").val(value.gfrValue);
-								            }
-										});
-									},
-								 error : function() {
-									alert("操作失败");
-										}
-									});
-							  },
-							error : function() {
+								// 如果输入的肌酐值和输入的年龄相等，则把GFR的值添加到页面
+								if ((age == value.age && createinine == value.creatinine) && (sex == value.sex && skin == value.skin)) {
+										$("#gfr").html(value.gfrValue);
+								}
+								$("#tbody2").append("<tr><td>"+value.sex+"</td><td>"+value.skin+"</td><td>"+value.creatinine+"</td><td>"+value.age+"</td><td>"+value.gfrValue+"</td><td style='cursor: pointer' onclick='deletegfr(\""+value.id+"\")'>删除</td></tr>")
+								});
+							},
+						    error : function() {
 								alert("操作失败");
-						}
-				});
+							}
+						});
+					 },
+					error : function() {
+					   alert("操作失败");
+				}
+			});
 		});
 });

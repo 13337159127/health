@@ -39,7 +39,7 @@ public class PersonGfrService {
 	public int addPersonGfr(String id, String sex, String skin, double createinine, int age, String gfrValue) {
 		return personGfrDao.addPersonGfr(id, sex, skin, createinine, age, gfrValue);
 	}
-	
+
 	/**
 	 * 查询数据库中的值
 	 * 
@@ -47,6 +47,16 @@ public class PersonGfrService {
 	 */
 	public List findGfr() {
 		return personGfrDao.findGfr();
+	}
+
+	/**
+	 * 删除GFR的值
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public int deletegfr(String id) {
+		return personGfrDao.deletegfr(id);
 	}
 
 }

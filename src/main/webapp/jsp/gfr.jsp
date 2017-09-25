@@ -19,8 +19,8 @@
 				<li class="mBMI_form_item_label">性别</li>		
 				<li>	  
 				<select id="sex" class="mBMI_form_item_input">
-                       <option value="man">男</option>
-                       <option value="woman">女</option>
+                       <option value="男">男</option>
+                       <option value="女">女</option>
                 </select>
                 </li>
 			</ul>
@@ -28,8 +28,8 @@
 				<li class="mBMI_form_item_label">皮肤赛</li>
 				<li>
 				<select id="skin" class="mBMI_form_item_input">
-                      <option value="black">黑</option>
-                      <option value="noblack">非黑</option>
+                      <option value="黑">黑</option>
+                      <option value="非黑">非黑</option>
                 </select>
                 </li>
 			</ul>
@@ -53,7 +53,7 @@
 			</div>
 		</form>
 		<div class="mBMI_result">
-			通过GFR MDRD: <input type="text" id="gfr" value="" /> ml/min/1.73 m<sup>2</sup>
+			通过GFR MDRD: <i id="gfr">  </i> ml/min/1.73 m<sup>2</sup>
 		</div>
 		<div class="mBMI_subTitle">GFR标准</div>
 		<div class="mBMI_standard">
@@ -72,7 +72,26 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="mBMI_subTitle">我的 GFR 历史记录</div>
+		<div class="mBMI_history">
+			<table>
+				<thead>
+					<tr>
+						<th>性别</th>
+						<th>肤色</th>
+						<th>肌酐值</th>
+						<th>年龄</th>
+						<th>GFR值 ml/min</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="tbody2">
+
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 <script type="text/javascript" src="${ctxPath}/js/countgfr.js"></script>
+<script type="text/javascript" src="${ctxPath}/js/findanddeletegfr.js"></script>
 </html>

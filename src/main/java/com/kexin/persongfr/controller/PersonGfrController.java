@@ -48,11 +48,11 @@ public class PersonGfrController {
 		// 如果传进来的单位为mg/dl(毫克每分升)
 		if (unit == 1) {
 			// 如果为男性并且非黑
-			if ("man".equals(sex) && "noblack".equals(skin)) {
+			if ("男".equals(sex) && "非黑".equals(skin)) {
 				gfr = 186 * Math.pow(createinine, -1.154) * Math.pow(age, -0.203);
-			} else if ("man".equals(sex) && "black".equals(skin)) { // 男性并且为黑
+			} else if ("男".equals(sex) && "黑".equals(skin)) { // 男性并且为黑
 				gfr = 186 * Math.pow(createinine, -1.154) * Math.pow(age, -0.203) * 1.210;
-			} else if ("woman".equals(sex) && "noblack".equals(skin)) { // 女性并且非黑
+			} else if ("女".equals(sex) && "非黑".equals(skin)) { // 女性并且非黑
 				gfr = 186 * Math.pow(createinine, -1.154) * Math.pow(age, -0.203) * 0.742;
 			} else { // 或者女性并且黑
 				gfr = 186 * Math.pow(createinine, -1.154) * Math.pow(age, -0.203) * 1.210;
@@ -64,11 +64,11 @@ public class PersonGfrController {
 			double createiNineValue = createinine * 0.01131;
 			int createiNine = (int) (createiNineValue + 0.5);
 			// 如果为男性并且非黑
-			if ("man".equals(sex) && "noblack".equals(skin)) {
+			if ("男".equals(sex) && "非黑".equals(skin)) {
 				gfr = 186 * Math.pow(createiNine, -1.154) * Math.pow(age, -0.203);
-			} else if ("man".equals(sex) && "black".equals(skin)) { // 男性并且为黑
+			} else if ("男".equals(sex) && "黑".equals(skin)) { // 男性并且为黑
 				gfr = 186 * Math.pow(createiNine, -1.154) * Math.pow(age, -0.203) * 1.210;
-			} else if ("woman".equals(sex) && "noblack".equals(skin)) { // 女性并且非黑
+			} else if ("女".equals(sex) && "非黑".equals(skin)) { // 女性并且非黑
 				gfr = 186 * Math.pow(createiNine, -1.154) * Math.pow(age, -0.203) * 0.742;
 			} else { // 或者女性并且黑
 				gfr = 186 * Math.pow(createiNine, -1.154) * Math.pow(age, -0.203) * 1.210;
@@ -78,7 +78,7 @@ public class PersonGfrController {
 		String gfrValue = df.format(gfr);
 		personGfrService.addPersonGfr(id, sex, skin, createinine, age, gfrValue);
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("key1", "可心");
+		map.put("key1", "1");
 		return map;
 	}
 
@@ -92,6 +92,22 @@ public class PersonGfrController {
 	public List findGfr() {
 		List list = personGfrService.findGfr();
 		return list;
+	}
+
+	/**
+	 * 删除GFR的值
+	 * 
+	 * @param id
+	 *            ID
+	 * @return
+	 */
+	@RequestMapping("/deletegfr")
+	@ResponseBody
+	public Map<String,String> deletegfr(String id) {
+		personGfrService.deletegfr(id);
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("key","1");
+		return map;
 	}
 
 }

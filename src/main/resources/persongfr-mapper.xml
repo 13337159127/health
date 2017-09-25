@@ -10,4 +10,8 @@
 	<select id="findGfr" resultType="java.util.Map">
 	    select * from gfr
 	</select>
+	<!-- 删除gfr的值 -->
+	<delete id="deletegfr" parameterType="String">
+	    delete from gfr where id = #{id}
+	</delete>
 </mapper>

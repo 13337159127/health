@@ -1,6 +1,7 @@
 package com.kexin.persongfr.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -56,5 +57,15 @@ public class PersonGfrDao {
 	 */
 	public List findGfr() {
 		return sqlSessionTemplate.selectList("com.kexin.persongfr.dao.PersonGfrDao.findGfr", null);
+	}
+
+	/**
+	 * 删除GFR的值
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public int deletegfr(String id) {
+		return sqlSessionTemplate.delete("com.kexin.persongfr.dao.PersonGfrDao.deletegfr", id);
 	}
 }
