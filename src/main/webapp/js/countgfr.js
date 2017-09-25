@@ -16,15 +16,13 @@ $(function() {
 		// 肌酐值的单位
 		var unit = $("#unit").val();
 		// 当肌酐的单位为mg/dl时，肌酐的值应为1到10之间
-		if (unit == "1"
-				&& (createinine > 10 || createinine < 1)) {
+		if (unit == "1" && (createinine > 10 || createinine < 1)) {
 			alert("肌酐的值应为1到10之间");
 			$("#createinine").focus();
 			return;
 		}
 		// 当肌酐的单位为umol/L时，肌酐的值应为5到855之间
-		if (unit == "2"
-				&& (createinine > 855 || createinine < 5)) {
+		if (unit == "2" && (createinine > 855 || createinine < 5)) {
 			alert("肌酐的值应为5到855之间");
 			$("#createinine").focus();
 			return;
