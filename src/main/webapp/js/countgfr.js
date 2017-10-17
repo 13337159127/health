@@ -46,8 +46,7 @@ $(function() {
 		   // 向后台提交数据
 		   $.ajax({
 			    type : 'get',
-				url : _ctxPath
-						+ '/persongfr/addPersonGfr.kexin',
+				url : ctxPath + '/persongfr/addPersonGfr.kexin',
 				dataType : 'json',
 				data : {
 					sex : $("#sex").val(),
@@ -60,7 +59,7 @@ $(function() {
 					// 查询数据库的值
 					$.ajax({
 						type : 'get',
-						url : _ctxPath + '/persongfr/findGfr.kexin',
+						url : ctxPath + '/persongfr/findGfr.kexin?phoneNumber='+phoneNumber,
 						dataType : 'json',							 
 						success : function(data) {
 							//清空元素下的DOM元素
@@ -70,7 +69,7 @@ $(function() {
 								if ((age == value.age && createinine == value.creatinine) && (sex == value.sex && skin == value.skin)) {
 										$("#gfr").html(value.gfrValue);
 								}
-								$("#tbody2").append("<tr><td>"+value.sex+"</td><td>"+value.skin+"</td><td>"+value.creatinine+"</td><td>"+value.age+"</td><td>"+value.gfrValue+"</td><td style='cursor: pointer' onclick='deletegfr(\""+value.id+"\")'>删除</td></tr>")
+								$("#tbody2").append("<tr><td>"+value.phoneNumber+"</td><td>"+value.sex+"</td><td>"+value.skin+"</td><td>"+value.creatinine+"</td><td>"+value.age+"</td><td>"+value.gfrValue+"</td><td style='cursor: pointer' onclick='deletegfr(\""+value.id+"\")'>删除</td></tr>")
 								});
 							},
 						    error : function() {

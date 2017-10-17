@@ -10,6 +10,8 @@ public class PersonGfrEntity {
 
 	// ID
 	private String id;
+	// 用户
+	private String phoneNumber;
 	// 性别
 	private String sex;
 	// 肤色
@@ -20,6 +22,14 @@ public class PersonGfrEntity {
 	private int age;
 	// gfr值
 	private String gfrValue;
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
 	public String getId() {
 		return id;

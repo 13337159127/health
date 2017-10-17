@@ -1,7 +1,6 @@
 package com.kexin.persongfr.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -39,7 +38,8 @@ public class PersonGfrDao {
 	 *            gfr值
 	 * @return
 	 */
-	public int addPersonGfr(String id, String sex, String skin, double createinine, int age, String gfrValue) {
+	public int addPersonGfr(String id, String phoneNumber, String sex, String skin, double createinine, int age,
+			String gfrValue) {
 		PersonGfrEntity entity = new PersonGfrEntity();
 		entity.setId(id);
 		entity.setSex(sex);
@@ -47,6 +47,7 @@ public class PersonGfrDao {
 		entity.setCreateinine(createinine);
 		entity.setAge(age);
 		entity.setGfrValue(gfrValue);
+		entity.setPhoneNumber(phoneNumber);
 		return sqlSessionTemplate.insert("com.kexin.persongfr.dao.PersonGfrDao.addPersonGfr", entity);
 	}
 
@@ -55,8 +56,8 @@ public class PersonGfrDao {
 	 * 
 	 * @return
 	 */
-	public List findGfr() {
-		return sqlSessionTemplate.selectList("com.kexin.persongfr.dao.PersonGfrDao.findGfr", null);
+	public List findGfr(String phoneNumber) {
+		return sqlSessionTemplate.selectList("com.kexin.persongfr.dao.PersonGfrDao.findGfr", phoneNumber);
 	}
 
 	/**

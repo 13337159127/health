@@ -41,7 +41,7 @@
 			
 			$.ajax({
 				type : 'get',
-				url : _ctxPath +'/personmessage/setPersonBMI.kexin',
+				url : ctxPath +'/personmessage/setPersonBMI.kexin',
 				data : {
 					personHeight : $("#personHeight").val(),
 					personWeight : $("#personWeight").val()
@@ -51,11 +51,11 @@
 					//查询数据
 					$.ajax({
 						type : 'get',
-						url : _ctxPath + '/personmessage/findPersonMessage.kexin',
+						url : ctxPath + '/personmessage/findPersonMessage.kexin?phoneNumber='+phoneNumber,
 						dataType : 'json',
 						success : function(data) {
 							//清空根据选择器选出来的元素下所有DOM元素
-							$("#tbody2").html("");
+							$("#tbody1").html("");
 							$.each(data,function(index, value) {								 
 									//如果身高体重等于本次输入的值，则把本次的值BMI值输入到页面上
 								    if(personHeight == value.personHeight && personWeight == value.personWeight){
@@ -73,7 +73,7 @@
 											$("#state").html("肥胖");
 										}				
 								    } 		 				 
-								$("#tbody2").append("<tr><td>"+ value.personID + "</td><td>" + value.time + "</td><td>"+ value.personHeight+ "</td><td>"+ value.personWeight+ "</td><td>"+ value.bmiValue+ "</td><td style='cursor: pointer' onclick='deleteMessage(\""+value.id+"\")'>删除</td></tr>")		
+								$("#tbody1").append("<tr><td>"+ value.phoneNumber + "</td><td>" + value.time + "</td><td>"+ value.personHeight+ "</td><td>"+ value.personWeight+ "</td><td>"+ value.bmiValue+ "</td><td style='cursor: pointer' onclick='deleteMessage(\""+value.id+"\")'>删除</td></tr>")		
 							});
 						},
 						error : function() {

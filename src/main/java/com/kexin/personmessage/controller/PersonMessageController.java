@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +36,7 @@ public class PersonMessageController {
 	 */
 	@RequestMapping("/setPersonBMI")
 	@ResponseBody
-	public Map<String, String> setPersonBMI(int personHeight, int personWeight) throws Exception {
+	public Map<String, String> setPersonBMI(HttpSession session,int personHeight, int personWeight) throws Exception {
 		// 格式化小数
 		DecimalFormat df = new DecimalFormat("0.00");
 		// 传进来的身高转换为小数。返回的是String类型
@@ -44,15 +46,15 @@ public class PersonMessageController {
 		// BMI=体重/(身高^),求出个人的BMI值
 		String bmiValue = df.format(personWeight / (personLong * personLong));
 		// personID的值
-		int personID = 1;
+		String phoneNumber = (String)session.getAttribute("phoneNumber");
 		// 获取当前日期
 		Date dt = new Date();
 		SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd");
 		String time = matter1.format(dt);
-		// 获取UUID
+		// 获取UUID,replaceAll("-", "")方法把 - 去掉
 	//	String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 		String id = UUID.randomUUID().toString();
-		personMessageService.addPersonMessage(bmiValue, personWeight, personHeight, personID, time, id);
+		personMessageService.addPersonMessage(bmiValue, personWeight, personHeight, phoneNumber, time, id);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("key", "添加");
 		return map;
@@ -66,8 +68,8 @@ public class PersonMessageController {
 	 */
 	@RequestMapping("/findPersonMessage")
 	@ResponseBody
-	public List findPersonMessage() throws Exception {
-		List list = personMessageService.findPersonMessage();
+	public List findPersonMessage(String phoneNumber) throws Exception {
+		List list = personMessageService.findPersonMessage(phoneNumber);
 		return list;
 	}
 

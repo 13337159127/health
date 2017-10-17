@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +42,8 @@ public class PersonGfrController {
 	 */
 	@RequestMapping("/addPersonGfr")
 	@ResponseBody
-	public Map<String, String> addPersonGfr(String sex, String skin, double createinine, int unit, int age) {
+	public Map<String, String> addPersonGfr(HttpSession session, String sex, String skin, double createinine, int unit,
+			int age) {
 		// 格式化小数
 		DecimalFormat df = new DecimalFormat("0.0000");
 		// 获取UUID
@@ -76,7 +79,8 @@ public class PersonGfrController {
 		}
 		// gfr值保留四位小数
 		String gfrValue = df.format(gfr);
-		personGfrService.addPersonGfr(id, sex, skin, createinine, age, gfrValue);
+		String phoneNumber = (String) session.getAttribute("phoneNumber");
+		personGfrService.addPersonGfr(id, phoneNumber, sex, skin, createinine, age, gfrValue);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("key1", "1");
 		return map;
@@ -89,8 +93,8 @@ public class PersonGfrController {
 	 */
 	@RequestMapping("/findGfr")
 	@ResponseBody
-	public List findGfr() {
-		List list = personGfrService.findGfr();
+	public List findGfr(String phoneNumber) {
+		List list = personGfrService.findGfr(phoneNumber);
 		return list;
 	}
 
@@ -103,10 +107,10 @@ public class PersonGfrController {
 	 */
 	@RequestMapping("/deletegfr")
 	@ResponseBody
-	public Map<String,String> deletegfr(String id) {
+	public Map<String, String> deletegfr(String id) {
 		personGfrService.deletegfr(id);
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("key","1");
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("key", "1");
 		return map;
 	}
 

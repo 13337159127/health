@@ -4,13 +4,13 @@
 	<!-- 添加个人信息 -->
 	<insert id="addPersonMessage" parameterType="com.kexin.personmessage.entity.PersonMessageEntity">
 		insert into
-		personbmi(id,personID,time,personHeight,personWeight,bmiValue)
-		values(#{id},#{personID},#{time},#{personHeight},#{personWeight},#{bmiValue})
+		personbmi(id,phoneNumber,time,personHeight,personWeight,bmiValue)
+		values(#{id},#{phoneNumber},#{time},#{personHeight},#{personWeight},#{bmiValue})
 	</insert>
 	<!-- 查询个人信息按照时间降序排列 -->
-	<select id="findPersonMessage" resultType="java.util.Map">
+	<select id="findPersonMessage" parameterType="String" resultType="java.util.Map">
 		select * from
-		personbmi order by time desc
+		personbmi where phoneNumber=#{phoneNumber} order by time desc
 	</select>
 	<!-- 删除个人信息 -->
 	<delete id="deletePersonMessage" parameterType="String">

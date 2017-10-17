@@ -11,7 +11,7 @@ public class PersonMessageEntity {
 	// UUID
 	private String id;
 	// 个人ID
-	private int personID;
+	private String phoneNumber;
 	// 时间
 	private String time;
 	// 身高
@@ -21,8 +21,12 @@ public class PersonMessageEntity {
 	// BMId 值
 	private String bmiValue;
 
-	public int getPersonID() {
-		return personID;
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getId() {
@@ -31,10 +35,6 @@ public class PersonMessageEntity {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public void setPersonID(int personID) {
-		this.personID = personID;
 	}
 
 	public String getTime() {

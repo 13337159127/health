@@ -1,11 +1,11 @@
 $(function(){
 	$.ajax({
 		type:'get',
-		url : _ctxPath + '/persongfr/findGfr.kexin',
+		url : ctxPath + '/persongfr/findGfr.kexin?phoneNumber='+phoneNumber,
 		dataType:'json',
 		success:function(data){
 			$.each(data,function(index,value){
-				$("#tbody2").append("<tr><td>"+value.sex+"</td><td>"+value.skin+"</td><td>"+value.creatinine+"</td><td>"+value.age+"</td><td>"+value.gfrValue+"</td><td style='cursor: pointer' onclick='deletegfr(\""+value.id+"\")'>删除</td></tr>")
+				$("#tbody2").append("<tr><td>"+value.phoneNumber+"</td><td>"+value.sex+"</td><td>"+value.skin+"</td><td>"+value.creatinine+"</td><td>"+value.age+"</td><td>"+value.gfrValue+"</td><td style='cursor: pointer' onclick='deletegfr(\""+value.id+"\")'>删除</td></tr>")
 			});
 		},
 		error:function(){
@@ -18,10 +18,10 @@ $(function(){
 function deletegfr(id){
 	$.ajax({
 		type:'get',
-		url:_ctxPath + '/persongfr/deletegfr.kexin?id='+id,
+		url:ctxPath + '/persongfr/deletegfr.kexin?id='+id,
 		dataType:'json',
 		success:function(data){
-			window.location.href=_ctxPath+'/jsp/gfr.jsp';
+			window.location.href=ctxPath+'/jsp/gfr.jsp';
 		},
 	    error:function(){
 	    	alert("删除失败");

@@ -3,15 +3,16 @@
 <mapper namespace="com.kexin.persongfr.dao.PersonGfrDao">
 	<!-- 添加信息 -->
 	<insert id="addPersonGfr" parameterType="com.kexin.persongfr.entity.PersonGfrEntity">
-		insert into gfr(id,sex,skin,creatinine,age,gfrValue)
-		values(#{id},#{sex},#{skin},#{createinine},#{age},#{gfrValue})
+		insert into
+		gfr(id,sex,skin,creatinine,age,gfrValue,phoneNumber)
+		values(#{id},#{sex},#{skin},#{createinine},#{age},#{gfrValue},#{phoneNumber})
 	</insert>
 	<!-- 查询数据库中的值 -->
-	<select id="findGfr" resultType="java.util.Map">
-	    select * from gfr
+	<select id="findGfr" parameterType="String" resultType="java.util.Map">
+		select * from gfr where phoneNumber = #{phoneNumber}
 	</select>
 	<!-- 删除gfr的值 -->
 	<delete id="deletegfr" parameterType="String">
-	    delete from gfr where id = #{id}
+		delete from gfr where id = #{id}
 	</delete>
 </mapper>

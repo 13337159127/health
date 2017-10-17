@@ -8,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kexin.personmessage.entity.PersonMessageEntity;
- 
+
 /**
  * 向mapper文件传参数
  * 
@@ -32,14 +32,14 @@ public class PersonMessageDao {
 	 *            身高
 	 * @return
 	 */
-	public int addPersonMessage(String bmiValue, int personWeight, int personHeight, int personID, String time,
+	public int addPersonMessage(String bmiValue, int personWeight, int personHeight, String phoneNumber, String time,
 			String id) throws Exception {
 		PersonMessageEntity entity = new PersonMessageEntity();
 		entity.setId(id);
 		entity.setTime(time);
 		entity.setPersonHeight(personHeight);
 		entity.setPersonWeight(personWeight);
-		entity.setPersonID(personID);
+		entity.setPhoneNumber(phoneNumber);
 		entity.setBmiValue(bmiValue);
 		return sqlSessionTemplate.insert("com.kexin.personmessage.dao.PersonMessageDao.addPersonMessage", entity);
 	}
@@ -50,8 +50,8 @@ public class PersonMessageDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public List findPersonMessage() throws Exception {
-		return sqlSessionTemplate.selectList("com.kexin.personmessage.dao.PersonMessageDao.findPersonMessage", null);
+	public List findPersonMessage(String phoneNumber) throws Exception {
+		return sqlSessionTemplate.selectList("com.kexin.personmessage.dao.PersonMessageDao.findPersonMessage", phoneNumber);
 	}
 
 	/**

@@ -188,7 +188,7 @@ input:focus {
 			<table>
 				<thead>
 					<tr>
-						<th>#</th>
+						<th>用户</th>
 						<th>日期</th>
 						<th>身高cm</th>
 						<th>体重kg</th>
@@ -196,13 +196,16 @@ input:focus {
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody id="tbody2">
+				<tbody id="tbody1">
 
 				</tbody>
 			</table>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+    var phoneNumber = '${phoneNumber}';
+</script>
 <script type="text/javascript" src="${ctxPath}/js/deletemessage.js"></script>
 <script type="text/javascript" src="${ctxPath}/js/findpersonmessage.js"></script>
 </html>

@@ -36,8 +36,9 @@ public class PersonGfrService {
 	 *            gfr值
 	 * @return
 	 */
-	public int addPersonGfr(String id, String sex, String skin, double createinine, int age, String gfrValue) {
-		return personGfrDao.addPersonGfr(id, sex, skin, createinine, age, gfrValue);
+	public int addPersonGfr(String id, String phoneNumber, String sex, String skin, double createinine, int age,
+			String gfrValue) {
+		return personGfrDao.addPersonGfr(id, phoneNumber, sex, skin, createinine, age, gfrValue);
 	}
 
 	/**
@@ -45,8 +46,8 @@ public class PersonGfrService {
 	 * 
 	 * @return
 	 */
-	public List findGfr() {
-		return personGfrDao.findGfr();
+	public List findGfr(String phoneNumber) {
+		return personGfrDao.findGfr(phoneNumber);
 	}
 
 	/**

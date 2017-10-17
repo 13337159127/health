@@ -30,9 +30,9 @@ public class PersonMessageService {
 	 *            身高
 	 * @return
 	 */
-	public int addPersonMessage(String bmiValue, int personWeight, int personHeight, int personID, String time,
+	public int addPersonMessage(String bmiValue, int personWeight, int personHeight, String phoneNumber, String time,
 			String id) throws Exception {
-		return personMessageDao.addPersonMessage(bmiValue, personWeight, personHeight, personID, time, id);
+		return personMessageDao.addPersonMessage(bmiValue, personWeight, personHeight, phoneNumber, time, id);
 	}
 
 	/**
@@ -41,8 +41,8 @@ public class PersonMessageService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List findPersonMessage() throws Exception {
-		return personMessageDao.findPersonMessage();
+	public List findPersonMessage(String phoneNumber) throws Exception {
+		return personMessageDao.findPersonMessage(phoneNumber);
 	}
 
 	/**

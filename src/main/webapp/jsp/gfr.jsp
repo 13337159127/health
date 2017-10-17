@@ -77,6 +77,7 @@
 			<table>
 				<thead>
 					<tr>
+					    <th>用户</th>
 						<th>性别</th>
 						<th>肤色</th>
 						<th>肌酐值</th>
@@ -92,6 +93,9 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+  var phoneNumber = '${phoneNumber}';
+</script>
 <script type="text/javascript" src="${ctxPath}/js/countgfr.js"></script>
 <script type="text/javascript" src="${ctxPath}/js/findanddeletegfr.js"></script>
 </html>
