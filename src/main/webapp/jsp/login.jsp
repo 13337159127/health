@@ -1,42 +1,80 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="factory.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="format-detection" content="telephone=no">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-touch-fullscreen" content="yes">
-<meta http-equiv="Access-Control-Allow-Origin" content="*">
-<link href="${ctxPath}/css/login.css" type="text/css" rel="stylesheet">
-<link href="${ctxPath}/css/global.css" type="text/css" rel="stylesheet">
-<title>计算器登录</title>
+<%@include file="/assets/jspfactory.jsp"%>
 </head>
 <body>
-	<div class="login">
-		<div class="login-title">
-			<p>计算器登录</p>
-			<i></i>
-		</div>
-		<form method="post" action="success.html">
-			<div class="login-bar">
-				<ul>
-					<li><img src="${ctxPath}/images/login_user.png"><input type="text"
-						class="text" placeholder="请输入用户名" /></li>
-					<li><img src="${ctxPath}/images/login_pwd.png"><input
-						type="password" class="psd" placeholder="请输入确认密码" /></li>
-				</ul>
-			</div>
-			<div class="login-btn">
-				<button class="submit" type="submit">登陆</button>
-				<a href="${ctxPath}/jsp/zhuce.jsp"><div class="login-reg">
-						<p>莫有账号，先注册</p>
-					</div></a>
-			</div>
-		</form>
-	</div>
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">计算器系统</a>
+            </div>
+    	</div>
+    </div>
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">登录页面</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">                        
+                        <li class="dropdown">
+                              <a href="${ctxPath}/jsp/register.jsp">用户注册</a>                              
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+  <center> 
+  <div class="content">       
+  <div class="form-group">
+     <label style="font-size:16px;">账&nbsp;号</label> &nbsp;&nbsp;
+     <input type="text" id="phoneNumber" style="width: 300px; display: inline" class="form-control" placeholder="用户/手机号码">
+  </div>
+  <div  class="form-group">
+     <label style="font-size:16px;">密&nbsp;码</label> &nbsp;&nbsp;
+     <input type="password" id="passWord"  autocomplete="new-password" style="width: 300px; display: inline"  class="form-control" placeholder="密码">
+  </div> 
+  <div  class="form-group">
+     <label style="font-size:16px;">验证码</label> &nbsp;&nbsp;
+     <input type="text" id="code" style="width: 210px; display: inline"  class="form-control" placeholder="请输入验证码/不区分大小写">
+     <img id="codeImg"  alt="验证码" src="${ctxPath}/admin/code.kexin" onclick="changeImg()"/>
+  </div> 
+  <!-- 添加span标签的值 -->
+  <div id="div2" class="form-group">
+     
+  </div >   
+    <input type="submit" id="submit" value="登 录" />
+    <input type="reset"  id="reset" value="重置" />    
+ </div>
+ </center> 
+ </div>
+</div>
+<script src="${ctxPath}/js/login.js"></script>
+<script type="text/javascript">
+function changeImg() {
+    //根据ID获取到一个元素imgSrc
+    var imgSrc = $("#codeImg");
+    //使用attr获取src属性的值（一个请求地址）
+    var src = imgSrc.attr("src");
+    //设置src属性的值，调用chgUrl函数，传一个请求验证码地址
+    imgSrc.attr("src", chgUrl(src));
+}  
+
+// 加入时间戳，去缓存机制
+function chgUrl(url) {
+    var timestamp = (new Date()).valueOf();
+    if ((url.indexOf("&") >= 0)) {
+        url = url + "&timestamp=" + timestamp;
+    } else {
+        url = url + "?timestamp=" + timestamp;
+    }
+    return url;
+}
+</script>
 </body>
 </html>

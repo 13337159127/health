@@ -21,7 +21,7 @@
 		 url:ctxPath+'/personmessage/deletePersonMessage.kexin?id='+id,
 		 dataType:'json',
 		 success:function(data){			  
-			 window.location.href=ctxPath+'/jsp/index.jsp';
+			 window.location.href=ctxPath+'/jsp/bmi.jsp';
 		 },
 		 error:function(){
 			 alert("操作失败");

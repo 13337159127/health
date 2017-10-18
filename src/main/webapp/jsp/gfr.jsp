@@ -96,6 +96,6 @@
 <script type="text/javascript">
   var phoneNumber = '${phoneNumber}';
 </script>
-<script type="text/javascript" src="${ctxPath}/js/countgfr.js"></script>
-<script type="text/javascript" src="${ctxPath}/js/findanddeletegfr.js"></script>
+<script type="text/javascript" src="${ctxPath}/js/findgfr.js"></script>
+<script type="text/javascript" src="${ctxPath}/js/deletegfr.js"></script>
 </html>

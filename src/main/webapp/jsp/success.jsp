@@ -15,7 +15,7 @@
                 <a href="#" class="simple-text">计算器系统</a>
             </div>
             <ul class="nav">                            
-					<li class="active"><a href="${ctxPath}/jsp/index.jsp"> <i class="ti-bell"></i>
+					<li class="active"><a href="${ctxPath}/jsp/bmi.jsp"> <i class="ti-bell"></i>
 							<p>计算BMI的值</p>
 					</a></li>
 					<li class="active"><a href="${ctxPath}/jsp/gfr.jsp"> <i class="ti-map"></i>
@@ -105,7 +105,7 @@
 <script type="text/javascript">
   var phoneNumber = '${phoneNumber}';
 </script>
-<script type="text/javascript" src="${ctxPath}/js/deletemessage.js"></script>
-<script type="text/javascript" src="${ctxPath}/js/findanddeletegfr.js"></script>
+<script type="text/javascript" src="${ctxPath}/js/deletebmi.js"></script>
+<script type="text/javascript" src="${ctxPath}/js/deletegfr.js"></script>
 </body>   
 </html>

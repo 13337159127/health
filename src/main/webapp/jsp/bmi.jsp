@@ -206,6 +206,6 @@ input:focus {
 <script type="text/javascript">
     var phoneNumber = '${phoneNumber}';
 </script>
-<script type="text/javascript" src="${ctxPath}/js/deletemessage.js"></script>
-<script type="text/javascript" src="${ctxPath}/js/findpersonmessage.js"></script>
+<script type="text/javascript" src="${ctxPath}/js/deletebmi.js"></script>
+<script type="text/javascript" src="${ctxPath}/js/findbmi.js"></script>
 </html>

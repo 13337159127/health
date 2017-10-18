@@ -55,10 +55,13 @@ public class UserController {
 	@RequestMapping("/findUserMessage")
 	@ResponseBody
 	public String findUserMessage(HttpSession session, String phoneNumber, String passWord, String code) {
-		String Code = (String) session.getAttribute("code");
-		// 判断验证码是否相等，不相等直接失败
-		if (!Code.equals(code)) {
-			return "图片验证失败";
+		// 如果是移动端登录，没有验证码。不需要验证
+		if (code != null) {
+			String Code = (String) session.getAttribute("code");
+			// 判断验证码是否相等，不相等直接失败
+			if (!Code.equals(code)) {
+				return "图片验证失败";
+			}
 		}
 		List list = userService.findUserMessage(phoneNumber, passWord);
 		// 如果查找到符合的数据，list的长度大于0
