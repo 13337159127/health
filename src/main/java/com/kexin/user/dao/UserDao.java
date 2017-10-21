@@ -1,6 +1,8 @@
 package com.kexin.user.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -48,5 +50,21 @@ public class UserDao {
 		entity.setPhoneNumber(phoneNumber);
 		entity.setPassWord(passWord);
 		return sqlSessionTemplate.selectList("com.kexin.user.dao.UserDao.findUserMessage", entity);
+	}
+
+	/**
+	 * 管理员登录
+	 * 
+	 * @param userName
+	 *            用户名
+	 * @param passWord
+	 *            密码
+	 * @return
+	 */
+	public List findManager(String userName, String passWord) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("userName", userName);
+		map.put("passWord", passWord);
+		return sqlSessionTemplate.selectList("com.kexin.user.dao.UserDao.findManager", map);
 	}
 }

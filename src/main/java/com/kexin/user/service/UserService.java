@@ -40,4 +40,17 @@ public class UserService {
 	public List findUserMessage(String phoneNumber, String passWord){
 		return userDao.findUserMessage(phoneNumber, passWord);
 	}
+	
+	/**
+	 * 管理员登录
+	 * 
+	 * @param userName
+	 *            用户名
+	 * @param passWord
+	 *            密码
+	 * @return
+	 */
+	public List findManager(String userName, String passWord) {
+		return userDao.findManager(userName, passWord);
+	}
 }

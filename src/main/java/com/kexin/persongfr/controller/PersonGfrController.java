@@ -113,5 +113,16 @@ public class PersonGfrController {
 		map.put("key", "1");
 		return map;
 	}
+	
+	/**
+	 * 管理员查看GFR值
+	 * @return
+	 */
+	@RequestMapping("/managerFindGFR")
+	@ResponseBody
+	public List managerFindGFR(){
+		List list = personGfrService.managerFindGFR();
+		return list;
+	}
 
 }

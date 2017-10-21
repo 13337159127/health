@@ -17,4 +17,8 @@
 		delete from
 		personbmi where id=#{id}
 	</delete>
+	<!-- 管理员查看用户BMI -->
+	<select id="managerFindBmi" resultType="java.util.Map">
+	    select * from personbmi
+	</select>
 </mapper>

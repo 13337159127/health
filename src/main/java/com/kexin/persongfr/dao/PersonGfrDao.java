@@ -69,4 +69,12 @@ public class PersonGfrDao {
 	public int deletegfr(String id) {
 		return sqlSessionTemplate.delete("com.kexin.persongfr.dao.PersonGfrDao.deletegfr", id);
 	}
+	
+	/**
+	 * 管理员查看GFR值
+	 * @return
+	 */
+	public List managerFindGFR(){
+		return sqlSessionTemplate.selectList("com.kexin.persongfr.dao.PersonGfrDao.managerFindGFR", null);
+	}
 }

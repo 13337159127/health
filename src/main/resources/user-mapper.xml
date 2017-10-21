@@ -10,4 +10,8 @@
 	<select id="findUserMessage" parameterType="com.kexin.user.entity.UserEntity" resultType="java.util.Map">
 		select * from user where phoneNumber=#{phoneNumber} and passWord=#{passWord}
 	</select>
+	<!-- 管理员登录 -->
+	<select id="findManager" parameterType="java.util.Map" resultType="java.util.Map">
+	    select * from manager where userName = #{userName} and passWord = #{passWord}
+	</select>
 </mapper>

@@ -31,7 +31,8 @@ public class UserController {
 	 */
 	@RequestMapping("/addUserMessage")
 	@ResponseBody
-	public String addUserMessage(HttpSession session, String phoneNumber, String passWord, String code) {
+	public String addUserMessage(HttpSession session, String phoneNumber, String passWord, String code)
+			throws Exception {
 		String Code = (String) session.getAttribute("code");
 		// 判断验证码是否相等，不相等直接失败
 		if (!Code.equals(code)) {
@@ -54,7 +55,8 @@ public class UserController {
 	 */
 	@RequestMapping("/findUserMessage")
 	@ResponseBody
-	public String findUserMessage(HttpSession session, String phoneNumber, String passWord, String code) {
+	public String findUserMessage(HttpSession session, String phoneNumber, String passWord, String code)
+			throws Exception {
 		// 如果是移动端登录，没有验证码。不需要验证
 		if (code != null) {
 			String Code = (String) session.getAttribute("code");
@@ -67,6 +69,28 @@ public class UserController {
 		// 如果查找到符合的数据，list的长度大于0
 		if (list.size() > 0) {
 			session.setAttribute("phoneNumber", phoneNumber);
+			return "成功";
+		} else {
+			return "失败";
+		}
+	}
+
+	/**
+	 * 管理员登录
+	 * 
+	 * @param userName
+	 *            用户
+	 * @param passWord
+	 *            密码
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/findManager")
+	@ResponseBody
+	public String findManager(HttpSession session,String userName, String passWord) throws Exception {
+		List list = userService.findManager(userName, passWord);
+		if (list.size() > 0) {
+			session.setAttribute("userName", userName);
 			return "成功";
 		} else {
 			return "失败";

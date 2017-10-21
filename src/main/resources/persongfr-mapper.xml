@@ -15,4 +15,8 @@
 	<delete id="deletegfr" parameterType="String">
 		delete from gfr where id = #{id}
 	</delete>
+	<!-- 管理员查看用户GFR值 -->
+	<select id="managerFindGFR" resultType="java.util.Map">
+	    select * from gfr
+	</select>
 </mapper>

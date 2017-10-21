@@ -59,5 +59,13 @@ public class PersonGfrService {
 	public int deletegfr(String id) {
 		return personGfrDao.deletegfr(id);
 	}
+	
+	/**
+	 * 管理员查看GFR值
+	 * @return
+	 */
+	public List managerFindGFR(){
+		return personGfrDao.managerFindGFR();
+	}
 
 }

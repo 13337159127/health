@@ -65,4 +65,13 @@ public class PersonMessageDao {
 	public int deletePersonMessage(String id) throws Exception {
 		return sqlSessionTemplate.delete("com.kexin.personmessage.dao.PersonMessageDao.deletePersonMessage", id);
 	}
+	
+	/**
+	 * 管理员查看用户的所有信息
+	 * @return
+	 * @throws Exception
+	 */
+	public List managerFindBmi() throws Exception{
+		return sqlSessionTemplate.selectList("com.kexin.personmessage.dao.PersonMessageDao.managerFindBmi", null);
+	}
 }

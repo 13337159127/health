@@ -36,7 +36,7 @@ public class PersonMessageController {
 	 */
 	@RequestMapping("/setPersonBMI")
 	@ResponseBody
-	public Map<String, String> setPersonBMI(HttpSession session,int personHeight, int personWeight) throws Exception {
+	public Map<String, String> setPersonBMI(HttpSession session, int personHeight, int personWeight) throws Exception {
 		// 格式化小数
 		DecimalFormat df = new DecimalFormat("0.00");
 		// 传进来的身高转换为小数。返回的是String类型
@@ -46,13 +46,13 @@ public class PersonMessageController {
 		// BMI=体重/(身高^),求出个人的BMI值
 		String bmiValue = df.format(personWeight / (personLong * personLong));
 		// personID的值
-		String phoneNumber = (String)session.getAttribute("phoneNumber");
+		String phoneNumber = (String) session.getAttribute("phoneNumber");
 		// 获取当前日期
 		Date dt = new Date();
 		SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd");
 		String time = matter1.format(dt);
 		// 获取UUID,replaceAll("-", "")方法把 - 去掉
-	//	String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+		// String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 		String id = UUID.randomUUID().toString();
 		personMessageService.addPersonMessage(bmiValue, personWeight, personHeight, phoneNumber, time, id);
 		Map<String, String> map = new HashMap<String, String>();
@@ -88,5 +88,18 @@ public class PersonMessageController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("key", "删除");
 		return map;
+	}
+
+	/**
+	 * 管理员查看用户的bmi值
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/managerFindBmi")
+	@ResponseBody
+	public List managerFindBmi() throws Exception {
+		List list = personMessageService.managerFindBmi();
+		return list;
 	}
 }
